@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "vp-cyp-inhibition: four CYP activity-screen predictors"
+message: "Please cite this package and the OpenADMET CYP challenge dataset."
+type: software
+authors:
+  - name: "Sagace Labs"
+repository-code: "https://github.com/Sagace-Labs/vp-cyp-inhibition"
+license: Apache-2.0
+version: "1.0.0"
+abstract: >-
+  Structure-based probabilities for at least 50% activity reduction in four
+  OpenADMET CYP single-concentration screens.

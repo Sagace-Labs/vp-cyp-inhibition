@@ -1,0 +1,13 @@
+Data licence — data/cyp_inhibition.parquet
+==========================================
+
+The bundled standardized table and example fixture derive from the OpenADMET
+CYP challenge training release. The source dataset is marked Apache-2.0:
+https://huggingface.co/datasets/openadmet/cyp-challenge-train-test
+
+Pinned source revision: 146282d2ce1532f1803679a834a9bec9dac1e482.
+Only the four single-concentration CYP1A2, CYP2C9, CYP2D6 and CYP3A4 readouts
+are used. Each readout becomes a binary label at log2 activity fold change <= -1.
+
+The dataset and its adaptations are distributed under Apache-2.0. The package
+source code and fitted weights carry their own Apache-2.0 LICENSE file.

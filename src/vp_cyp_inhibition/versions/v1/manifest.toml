@@ -1,0 +1,70 @@
+schema = 1
+pathway = "cyp-inhibition"
+version = "v1"
+released = "2026-09-27"
+reason = "First four-enzyme 50 uM CYP activity screen release"
+
+[signature]
+version = 1
+inputs = ["smiles"]
+
+[[signature.outputs]]
+name = "cyp1a2_screen50"
+dtype = "float32"
+range = [0.0, 1.0]
+semantics = "P(CYP1A2 activity reduced at least 50% in the OpenADMET 50 uM single-concentration assay)"
+missing = "NaN when RDKit cannot parse the input SMILES"
+
+[[signature.outputs]]
+name = "cyp2c9_screen50"
+dtype = "float32"
+range = [0.0, 1.0]
+semantics = "P(CYP2C9 activity reduced at least 50% in the OpenADMET 50 uM single-concentration assay)"
+missing = "NaN when RDKit cannot parse the input SMILES"
+
+[[signature.outputs]]
+name = "cyp2d6_screen50"
+dtype = "float32"
+range = [0.0, 1.0]
+semantics = "P(CYP2D6 activity reduced at least 50% in the OpenADMET 50 uM single-concentration assay)"
+missing = "NaN when RDKit cannot parse the input SMILES"
+
+[[signature.outputs]]
+name = "cyp3a4_screen50"
+dtype = "float32"
+range = [0.0, 1.0]
+semantics = "P(CYP3A4 activity reduced at least 50% in the OpenADMET 50 uM single-concentration assay)"
+missing = "NaN when RDKit cannot parse the input SMILES"
+
+[dataset]
+name = "OpenADMET CYP challenge 50 uM activity screen"
+source = "Pinned single-concentration training table; log2 fold change <= -1"
+url = "https://huggingface.co/datasets/openadmet/cyp-challenge-train-test/tree/146282d2ce1532f1803679a834a9bec9dac1e482"
+retrieved = "2026-09-27"
+licence = "Apache-2.0"
+redistributable = true
+path = "data/cyp_inhibition.parquet"
+fetch = "python -m vp_cyp_inhibition.data fetch --verify"
+labels = ["label", "cyp2c9", "cyp2d6", "cyp3a4"]
+sha256 = "f2183f35879762591a33e2d9cdbeb9f9f83438b0dd14f34712a8375735903f72"
+n_rows = 4374
+base_rate = 0.298811
+
+[model]
+family = "xgboost-binary"
+features = "morgan2_1024_openadmet10"
+fit = "one fixed-recipe estimator per output on all labeled compounds"
+weights = "weights.joblib"
+sha256 = "220f0c1493779689411e70091ca80f2cb6b2744ae796a3f76b71854133f43198"
+features_by_output = []
+
+[protocol]
+id = "scaffold-balanced-5seed@1"
+provider = "vp-core"
+core_version = "1.5.0"
+
+[provenance]
+python = "3.12.9"
+rdkit = "2026.03.6"
+sklearn = "1.9.1"
+xgboost = "3.4.1"

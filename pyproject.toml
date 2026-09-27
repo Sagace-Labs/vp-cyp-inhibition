@@ -1,0 +1,21 @@
+[project]
+name = "vp-cyp-inhibition"
+version = "1.0.0"
+description = "Four assay-specific CYP activity-reduction predictions from SMILES."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Sagace Labs" }]
+keywords = ["CYP", "inhibition", "ADME", "cheminformatics"]
+dependencies = ["vp-core>=1.5,<2", "numpy>=1.26", "pandas>=2.2", "scikit-learn>=1.4", "xgboost>=2.0"]
+
+[project.urls]
+Source = "https://github.com/Sagace-Labs/vp-cyp-inhibition"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vp_cyp_inhibition"]
+artifacts = ["src/vp_cyp_inhibition/versions/**"]
